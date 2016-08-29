@@ -34,14 +34,6 @@ def place_ships():
     destroyer = place_ship(existing_ship_positions, 2)
     existing_ship_positions += ["destroyer"] + destroyer
 
-    print carrier
-    print battleship
-    print submarine
-    print cruiser
-    print destroyer
-
-    print "\n\n\n"
-
     return existing_ship_positions
 
 def place_ship(existing_positions, ship_size):
@@ -52,10 +44,10 @@ def place_ship(existing_positions, ship_size):
         start_row =  random.randrange(1,11)
         start_col = random.randrange(1,11)
 
-        #ship is horizontal
         direction = random.randrange(1,3)
+        #ship is horizontal
         if direction == 1:
-            if start_col < 7:
+            if start_col < 12 - ship_size:
                 for coord in range(start_col, start_col + ship_size):
                     current_ship.append(str(chr(64+start_row)) + str(coord))
                     if current_ship[-1] in existing_positions:
@@ -65,7 +57,7 @@ def place_ship(existing_positions, ship_size):
 
         #ship is vertical
         else:
-            if start_row < 7:
+            if start_row < 12 - ship_size:
                 for coord in range(start_row, start_row + ship_size):
                     current_ship.append(str(chr(64+coord)) + str(start_col))
                     if current_ship[-1] in existing_positions:
