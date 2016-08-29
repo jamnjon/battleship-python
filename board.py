@@ -43,8 +43,8 @@ def place_ship(existing_positions, ship_size):
         invalid_position = False
         start_row =  random.randrange(1,11)
         start_col = random.randrange(1,11)
-
         direction = random.randrange(1,3)
+
         #ship is horizontal
         if direction == 1:
             if start_col < 12 - ship_size:
