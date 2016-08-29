@@ -12,11 +12,12 @@ def take_turn(board, ships, hits, guesses):
             current_col = 10
         guess = user_input[0].upper() + str(current_col)
         if guess not in guesses:
+            guesses.append(guess)
             if (guess) in ships:
-                guesses.append(guess)
                 board[current_row][current_col] = u"\033[1;32;40m\u2713\033[1;37;40m"
                 idx = ships.index(guess)
                 os.system("clear")
+                print "\033[1;32;40mYou hit the ship at " + guess + "!\n\033[1;37;40m"
 
                 if idx < 7:
                     hits[0] -= 1
@@ -42,6 +43,7 @@ def take_turn(board, ships, hits, guesses):
             else:
                 os.system("clear")
                 board[current_row][current_col] = "\033[1;31;40mX\033[1;37;40m"
+                print "\033[1;31;40mThere is no ship at " + guess + "!\n\033[1;37;40m"
         else:
             os.system("clear")
             print "\033[1;31;40mYou already guessed " + guess + "\n\033[1;37;40m"
